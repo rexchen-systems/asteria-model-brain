@@ -1,0 +1,30 @@
+[NODE]
+ID=CALIBRATION
+SUMMARY=speaker attribution relationship correction unknown evidence and calibration history
+PATH=index/events-calibration.txt
+[END]
+[NODE]
+ID=OPERATIONS
+SUMMARY=unrelated operational schedules facilities and equipment events
+PATH=index/events-operations.txt
+[END]
+[NODE]
+ID=MUSIC
+SUMMARY=unrelated music recording song arrangement and performance events
+PATH=index/events-music.txt
+[END]
+[NODE]
+ID=TRAVEL
+SUMMARY=unrelated travel route vehicle weather and lodging events
+PATH=index/events-travel.txt
+[END]
+[NODE]
+ID=GAME
+SUMMARY=unrelated game progress save state quest and item events
+PATH=index/events-game.txt
+[END]
+[NODE]
+ID=RESEARCH
+SUMMARY=unrelated research papers experiments and measurement events
+PATH=index/events-research.txt
+[END]

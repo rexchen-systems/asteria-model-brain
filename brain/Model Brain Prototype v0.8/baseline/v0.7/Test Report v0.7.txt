@@ -1,0 +1,52 @@
+Asteria Model Brain Prototype v0.7 Test Report
+Semantic / Relational Retrieval and Multi-event Context Reconstruction
+
+Date: 2026-09-18
+Authority: SYNTHETIC TEST EVIDENCE ONLY
+Overall Status: PARTIAL
+
+GATE_1_SEMANTIC_RELATIONAL=PASS_ONCE
+GATE_2_MULTI_EVENT=PASS_ONCE
+
+Supported once across seeds 701, 1701 and 9701:
+
+- Boot Entry did not contain the correct node path.
+- Natural-language Cue entered semantic candidate retrieval.
+- bge-m3 ranked candidates but did not determine truth.
+- qwen3.5:4b classified request intent but did not determine lifecycle, Current, speaker truth or authority.
+- Relationship, Historical Event, Later Actual, Current and Verified Learning were reconstructed through typed relation and Source fields.
+- Newer unverified Candidate and stale high-similarity Current did not override verified Current.
+- Similar Person, Relationship and Event distractors did not change attribution.
+- Incomplete source returned HOLD.
+- Unknown topic returned ASK.
+- Speaker event attribution matched the Oracle.
+- Continuity reconstruction loaded six nodes and excluded unrelated life events.
+
+Representative continuity cost:
+
+- Brain: 164,168 bytes
+- Nodes: 193
+- Full Candidate Index: 85,763 bytes
+- Working Set: 112,772 bytes
+- Loaded context nodes: 6
+- qwen tokens: 119 input + 7 output
+- Query embedding calls: 1 per task
+- First cold local-model latency was approximately 11.7 seconds; warm runs were approximately 0.36 to 0.38 seconds for continuity retrieval.
+
+Invalid early evidence:
+
+The first apparent PASS used two scripted conveniences: a fixed-text Person fallback and a direct ID for the incomplete event. They were removed. The non-scripted run initially failed, revealing unreliable 2B intent classification and failure of a flat mixed-node top-12 to retain the correct Person. The final PASS used a better local 4B intent classifier, type-bounded candidate regions, similarity thresholds and deterministic Source / Relation traversal.
+
+Known limitation
+
+The v0.7 test loaded the full 193-node Candidate Index before semantic ranking. Working Set size therefore grew with the index, so this design was not suitable for unbounded growth.
+
+Next correction:
+
+- Hierarchical Region Index.
+- Semantic ranking only inside the selected Person or Event shard.
+- Once a seed node is chosen, traverse exact Relation / Source edges through deterministic node addressing.
+- Do not load the global node index into cognition.
+- Repeat wrong-source, stale, incomplete and UNKNOWN gates.
+
+No formal Workspace or real-person data was read or modified.

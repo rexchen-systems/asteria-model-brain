@@ -1,0 +1,6 @@
+License status
+
+Selected for initial public release: MIT License.
+Scope: all files in this public release repository, including code, synthetic test fixtures, and documentation.
+
+The public repository includes the canonical MIT License file. This status note is administrative and does not replace it.

@@ -1,0 +1,29 @@
+Asteria Model Brain Prototype v0.8 — Public Copy Manifest
+
+Release candidate: 2026-09-28
+Source: Internal Model Brain Prototype v0.8, synthetic-only experiment
+Release status: INITIAL PUBLIC RELEASE v0.1
+
+Included
+- PowerShell runtime and hierarchical retrieval worker.
+- Synthetic Brain fixtures, task prompts, Oracles, and preserved retrieval evidence for seeds 808, 1808, and 9808.
+- Sanitized v0.7 report and result snapshot used only for the baseline-integrity check.
+- Public README and bounded test report.
+
+Public-copy changes
+- Removed references that linked this generic synthetic prototype to a private/person-specific experiment.
+- Replaced the original adjacent-folder v0.7 lookup with this package's baseline/v0.7 snapshot so the test package is self-contained.
+- Moved historical run output to evidence/v0.8. A new run writes to runs/ and results/, keeping the included historical evidence intact.
+- Retained the source test's PASS_ONCE result and limitations. These are recorded results from the source experiment, not a fresh run of this public copy.
+
+Verification performed
+- File inventory and text scan for known private person/workspace names and local absolute paths.
+- Checked that the baseline snapshot and all three recorded seed evidence trees are present.
+- PowerShell parser validation passed for both included scripts. The scripts were not executed.
+- Both PowerShell scripts were statically parsed; the local model was not called during package preparation.
+
+Known limits
+- PASS_ONCE applies only to the recorded synthetic test and its stated local setup.
+- It does not establish multilingual capability, real-person continuity, natural personality, low-end hardware performance, or cloud-level reliability.
+- Runtime access limits were assessed from code and explicit read-path evidence; no OS-level file-read tracer was used.
+- MIT License applies to this release.

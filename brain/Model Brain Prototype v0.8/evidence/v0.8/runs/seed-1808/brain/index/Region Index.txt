@@ -1,0 +1,4 @@
+CONTINUITY_REGION=index/Person Candidates.txt
+SPEAKER_DIRECTORY=index/Event Region Directory.txt
+INCOMPLETE_DIRECTORY=index/Event Region Directory.txt
+UNKNOWN_POLICY=ASK

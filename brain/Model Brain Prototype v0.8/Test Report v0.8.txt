@@ -1,0 +1,79 @@
+Asteria Model–Brain Separation
+Model Brain Prototype v0.8 Test Report
+
+Version: v0.8
+Date: 2026-09-18
+Overall Status: PASS_ONCE
+Authority: EXPERIMENTAL ACTUAL / SYNTHETIC ONLY
+
+Purpose
+
+Remove the v0.7 privileged full-candidate-index advantage and test bounded semantic / relational retrieval plus multi-event context reconstruction before any real-person extraction.
+
+Result
+
+- Gate 1 Semantic / Relational Retrieval: PASS_ONCE
+- Gate 2 Multi-event Context Reconstruction: PASS_ONCE
+- Seeds: 808, 1808, 9808; all passed.
+- Full Node Catalog runtime access: NOT_DETECTED.
+- v0.7 report and result hashes remained unchanged.
+
+Observed architecture
+
+Brain Entry
+→ small Region Index
+→ intent-specific directory or person shard
+→ semantic region selection
+→ one bounded candidate shard
+→ deterministic relation / source traversal
+→ bounded working set
+
+Semantic retrieval only selected candidates. It did not decide Current, Authority, speaker truth, or lifecycle. Those decisions remained deterministic and source-bound.
+
+Evidence summary
+
+- Synthetic Brain: 197,230 bytes
+- Maximum Active Working Set: 3,307 bytes
+- Maximum loaded candidate shard: 4 nodes
+- Maximum region candidates: 6
+- Total local Core input tokens across 3 seeds × 4 tasks: 1,332
+- Total local Core output tokens: 78
+- Local model calls: 12
+- Embedding calls: 36
+- Total measured task latency: 5,302 ms
+- Cloud calls: 0
+
+Truth behavior
+
+- Correct Person, Relationship, Current, Historical Event, Actual, and Verified Learning were reconstructed together.
+- Similar person and similar event distractors did not replace the correct source chain.
+- Newer unverified Candidate and stale Current did not override Verified Current.
+- Speaker attribution used the selected verified event.
+- Incomplete evidence returned HOLD.
+- Unknown content returned ASK without loading a node.
+
+Failure and repair record
+
+The first orchestrated run reported FAIL even though all four task evidence blocks were correct. Cause: the verifier expected Unix-style line endings when counting GLOBAL_CATALOG_LOADED=False. Windows CRLF prevented the exact end-of-line regular expression from matching. The repair changed only evidence counting; Oracle, expected answers, retrieval thresholds, and task data were not relaxed. All three seeds were then rerun.
+
+Boundaries
+
+- This is synthetic evidence only.
+- It does not prove real-person continuity, natural personality, TB-scale retrieval, or full independence from model cognition.
+- Runtime access was evaluated from the explicit read-path evidence and implementation structure; no OS-level file-read tracer was used.
+- Region descriptions remain authored routing metadata. Future growth must test whether region maintenance and cross-region ambiguity remain bounded.
+- qwen3.5:4b classified intent; bge-m3 produced semantic candidates. Neither was allowed to promote truth.
+
+Public-scope note
+
+This release contains synthetic evidence only. It makes no authorization or readiness claim for extraction or use of private/person data.
+
+Evidence locations
+
+- evidence\v0.8\latest-result.txt
+- evidence\v0.8\runs\seed-808\evidence\Retrieval Result.txt
+- evidence\v0.8\runs\seed-1808\evidence\Retrieval Result.txt
+- evidence\v0.8\runs\seed-9808\evidence\Retrieval Result.txt
+- Run-Hierarchical.ps1
+- Run-v08.ps1
+
