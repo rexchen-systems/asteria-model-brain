@@ -1,9 +1,8 @@
 Asteria Public Research Draft
 
-2026-09-28 — Draft v0.1
-- Added a trilingual project entry in Traditional Chinese, English, and Japanese.
-- Separated Core and Brain public status.
-- Recorded Model Brain Prototype v0.8 as a synthetic-data candidate with PASS_ONCE scope.
-- Prepared a sanitized, self-contained public copy of the synthetic v0.8 prototype and retained its recorded test evidence separately from rerun output.
-- Added MIT License for the initial public release.
-- Release destination: github.com/rexchen-systems/asteria-model-brain.
+2026-09-28 — Initial public release v0.1
+- Published the trilingual project entry in Traditional Chinese, English, and Japanese.
+- Separated Core and Brain public status; custom Core implementation remains under research and is not included.
+- Published the sanitized, self-contained Model Brain Prototype v0.8 copy using synthetic data only, with recorded evidence and limitations.
+- Released the initial public materials under the MIT License.
+- Repository: https://github.com/rexchen-systems/asteria-model-brain
